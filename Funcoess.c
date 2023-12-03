@@ -1,9 +1,9 @@
 #include "Funcoes.h"
 
-// DefiniÁ„o das vari·veis globais
+// Defini√ß√£o das vari√°veis globais
 	char HOST[] = "localhost";
 	char USER[] = "Kairo";
-	char PASS[] = "@Kepc1234";
+	char PASS[] = "";
 	const char* DB = "addak";
 	char* consult;
 	const char* sentence;
@@ -43,13 +43,13 @@ void Fim_do_Programa(){
 	int resposta;
 	printf("Encerrar o programa?\n\n\n\n");
 	printf("[1] Encerrar \n");
-	printf("[0] Voltar ao inÌcio\n\n\n");
+	printf("[0] Voltar ao in√≠cio\n\n\n");
 	printf(" :");
 	do{
 		scanf(" %d", &resposta);
 		if(resposta != 0 && resposta != 1)
 		{
-			printf("Resposta Inv·lida.\n");
+			printf("Resposta Inv√°lida.\n");
 		}
 	}while(resposta != 0 && resposta != 1);
 	if(resposta == 1){
@@ -62,7 +62,7 @@ void Fim_do_Programa(){
 		system("cls");
 			Tela_Selecao();
 	}
-    delete[] consult;// Libera a memÛria alocada para a consulta
+    delete[] consult;// Libera a mem√≥ria alocada para a consulta
 	  fecharMySQL(obj); 
     system("pause");
 }
@@ -79,7 +79,7 @@ do {
 	time_t t = time(NULL);
     struct tm *data_atual = localtime(&t);
 
-    // Obtendo o ano, mÍs e dia atual
+    // Obtendo o ano, m√™s e dia atual
     int ano_atual = data_atual->tm_year + 1900;
     int mes_atual = data_atual->tm_mon + 1;
     int dia_atual = data_atual->tm_mday;
@@ -96,7 +96,7 @@ system("cls");
 /*6*/printf("\xDB     \xDB \xDB     \xDB \xDB     \xDB \xDB     \xDB \xDB  \xDF\xDC\n");
 /*7*/printf("\xDB     \xDB \xDB\xDC\xDC\xDC\xDC\xDF  \xDB\xDC\xDC\xDC\xDC\xDF  \xDB     \xDB \xDB   \xDF\xDC\n");
 setlocale(LC_ALL,"Portuguese");
-printf("ACREDITAMOS NO DESENVOLVIMENTO SUSTENT¡VEL");
+printf("ACREDITAMOS NO DESENVOLVIMENTO SUSTENT√ÅVEL");
 printf("\n");
 printf("\n");
 printf("\n");
@@ -117,10 +117,10 @@ MYSQL* obj;
 	int tela;
 	do{
 	printf("\\\\__ Campo Cliente __//\n\n\n\n");
-	printf("Qual ser· sua aÁ„o?\n");
+	printf("Qual ser√° sua a√ß√£o?\n");
 	printf("[1] Cadastro\n");
 	printf("[2] DATA BASE\n");
-	printf("[3] ModificaÁ„o\n");
+	printf("[3] Modifica√ß√£o\n");
 	printf("[4] Busca\n");
 	printf("[5] Deletar\n");
 	printf("\n\n\n\n\n\n");
@@ -146,20 +146,20 @@ switch(tela){
  //_________________________________________________________________________________________//
 /////////////////////////////////////////////////////////////////////////////////////////////
 void Cadastro_Cliente(){
- /**/ {//Conex„o com o Servidor MYSQL
+ /**/ {//Conex√£o com o Servidor MYSQL
 	char* consult; // Declara um ponteiro para armazenar a consulta SQL
-    const char* sentence; // Declara uma constante para armazenar a sentenÁa SQL
+    const char* sentence; // Declara uma constante para armazenar a senten√ßa SQL
     string sentence_aux; // Declara uma string para armazenar a consulta SQL como uma string
 
     // Inicializa o objeto MySQL
     if (!(obj = mysql_init(0))) {
-        cout << "ERRO: O objeto MySQL n„o pÙde ser criado." << endl;
+        cout << "ERRO: O objeto MySQL n√£o p√¥de ser criado." << endl;
         return ;
     }
 
     // Tenta conectar ao banco de dados MySQL
     if (!mysql_real_connect(obj, HOST, USER, PASS, "addak", 3306, NULL, 0)) {
-        cout << "ERRO: Algumas informaÁıes do banco de dados est„o erradas ou n„o existem." << endl;
+        cout << "ERRO: Algumas informa√ß√µes do banco de dados est√£o erradas ou n√£o existem." << endl;
         cout << mysql_error(obj) << endl;
         return ;
     }
@@ -172,7 +172,7 @@ void Cadastro_Cliente(){
        
        
 	  
-	 /**/	{//Formul·rio Cadastro Cliente
+	 /**/	{//Formul√°rio Cadastro Cliente
 		cout << "Adicione os dados seguindo os exemplos.";
 		printf("\n\n\n");
         //cin.ignore(100, '\n');
@@ -208,16 +208,16 @@ void Cadastro_Cliente(){
         cin.getline(Rua, 20, '\n');
         cout << endl;
 
-        cout << "N˙mero: ";
+        cout << "N√∫mero: ";
         cin.getline(Numero, 5, '\n');
         cout << endl;
         
-        cout << "ObservaÁ„o: ";
+        cout << "Observa√ß√£o: ";
         cin.getline(Obs, 250, '\n');
         cout << endl;
         
 }
-       /**/ {//AdiÁ„o das informaÁıes e VerificaÁ„o da conex„o
+       /**/ {//Adi√ß√£o das informa√ß√µes e Verifica√ß√£o da conex√£o
 		
 		sentence_aux = "INSERT INTO Cliente_Empresa(`Id_Cliente`, `Nome`, `CNPJ`, `Telefone`, `Cep`, `Cidade`, `Bairro`, `Rua`, `Numero`, `Observacao`) VALUES(%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')";
         sentence = sentence_aux.c_str();
@@ -226,7 +226,7 @@ void Cadastro_Cliente(){
         sprintf(consult, sentence, Id, Nome, CNPJ, Telefone, CEP, Cidade, Bairro, Rua, Numero, Obs);
 
         if (mysql_ping(obj)) {
-            cout << "ERRO: ImpossÌvel conectar." << endl;
+            cout << "ERRO: Imposs√≠vel conectar." << endl;
             cout << mysql_error(obj) << endl;
         }
 
@@ -235,7 +235,7 @@ void Cadastro_Cliente(){
             cin.ignore(100, '\n');
             getchar();
         } else {
-            cout << "InformaÁıes adicionadas corretamente." << endl;
+            cout << "Informa√ß√µes adicionadas corretamente." << endl;
         }
 }
         mysql_store_result(obj);
@@ -243,7 +243,7 @@ void Cadastro_Cliente(){
         system("cls");
 		cout << endl << "Adicionar novo cadastro?" << endl;
         cout << "[1]: Sim" << endl;
-        cout << "[0]: N„o" << endl;
+        cout << "[0]: N√£o" << endl;
         cout << "Resposta: ";
         cin >> answer;
         cout << endl;
@@ -262,30 +262,30 @@ void Delete_Cliente(){
 	MYSQL* obj = mysql_init(0);
     int id = 0;
 
-    cout << "Digite o Id do cliente que ser· excluÌdo: ";
+    cout << "Digite o Id do cliente que ser√° exclu√≠do: ";
     cin >> id;
 
     // Conectar ao banco de dados
     if (!mysql_real_connect(obj, HOST, USER, PASS, "addak", 3306, NULL, 0)) {
-        cout << "ERRO: Algumas informaÁıes do banco de dados est„o erradas ou n„o existem." << endl;
+        cout << "ERRO: Algumas informa√ß√µes do banco de dados est√£o erradas ou n√£o existem." << endl;
         cout << mysql_error(obj) << endl;
         fecharMySQL(obj);
         return;
     }
 
-    // Construir a consulta SQL de exclus„o
+    // Construir a consulta SQL de exclus√£o
     stringstream ss;
     ss << "DELETE FROM Cliente_Empresa WHERE Id_Cliente = " << id;
     string consulta = ss.str();
 
-    // Executar a consulta SQL de exclus„o
+    // Executar a consulta SQL de exclus√£o
     if (mysql_query(obj, consulta.c_str())) {
         cout << "ERRO: " << mysql_error(obj) << endl;
     } else {
-        cout << "Cliente excluÌdo com sucesso." << endl;
+        cout << "Cliente exclu√≠do com sucesso." << endl;
     }
 system("pause");
-    // Fechar a conex„o
+    // Fechar a conex√£o
     fecharMySQL(obj);
     Fim_do_Programa();
 }
@@ -295,12 +295,12 @@ void DB_Cliente() {
  MYSQL* obj = mysql_init(0);
 
     if (!obj) {
-        cout << "ERRO: O objeto MySQL n„o pÙde ser criado." << endl;
+        cout << "ERRO: O objeto MySQL n√£o p√¥de ser criado." << endl;
         return;
     }
 
     if (!mysql_real_connect(obj, HOST, USER, PASS, DB, 3306, NULL, 0)) {
-        cout << "ERRO: Algumas informaÁıes do banco de dados est„o erradas ou n„o existem." << endl;
+        cout << "ERRO: Algumas informa√ß√µes do banco de dados est√£o erradas ou n√£o existem." << endl;
         cout << mysql_error(obj) << endl;
         mysql_close(obj);
         return;
@@ -347,12 +347,12 @@ void Modificar_Cliente() {
 setlocale(LC_ALL,"Portuguese");
     // Conectar ao banco de dados
     if (!(obj = mysql_init(0))) {
-        cout << "ERRO: O objeto MySQL n„o pÙde ser criado." << endl;
+        cout << "ERRO: O objeto MySQL n√£o p√¥de ser criado." << endl;
         return;
     }
 
     if (!mysql_real_connect(obj, HOST, USER, PASS, "addak", 3306, NULL, 0)) {
-        cout << "ERRO: Algumas informaÁıes do banco de dados est„o erradas ou n„o existem." << endl;
+        cout << "ERRO: Algumas informa√ß√µes do banco de dados est√£o erradas ou n√£o existem." << endl;
         cout << mysql_error(obj) << endl;
         return;
     }
@@ -392,16 +392,16 @@ setlocale(LC_ALL,"Portuguese");
         cout << "Cidade: " << row[5] << endl;
         cout << "Bairro: " << row[6] << endl;
         cout << "Rua: " << row[7] << endl;
-        cout << "N˙mero: " << row[8] << endl;
-        cout << "ObservaÁ„o" << row[9] << endl;
-        // Exibir outros campos conforme necess·rio
+        cout << "N√∫mero: " << row[8] << endl;
+        cout << "Observa√ß√£o" << row[9] << endl;
+        // Exibir outros campos conforme necess√°rio
     } else {
-        cout << "Cliente n„o encontrado." << endl;
+        cout << "Cliente n√£o encontrado." << endl;
         fecharMySQL(obj);
         Fim_do_Programa();
         return;
     }
-    printf("Qual dado ser· alterado?\n\n");
+    printf("Qual dado ser√° alterado?\n\n");
         cout << "[1]Nome\n";
         cout << "[2]CNPJ\n";
         cout << "[3]Telefone\n";
@@ -409,8 +409,8 @@ setlocale(LC_ALL,"Portuguese");
         cout << "[5]Cidade\n";
         cout << "[6]Bairro\n";
         cout << "[7]Rua\n";
-        cout << "[8]N˙mero\n";
-        cout << "[9]ObservaÁ„o\n";
+        cout << "[8]N√∫mero\n";
+        cout << "[9]Observa√ß√£o\n";
         cout << "[0] Nenhum\n";
         printf("R: ");
         scanf(" %d", &opcao);
@@ -421,12 +421,12 @@ setlocale(LC_ALL,"Portuguese");
 		}
         {//mostra novamente os dados 
        	if (!(obj = mysql_init(0))) {
-        cout << "ERRO: O objeto MySQL n„o pÙde ser criado." << endl;
+        cout << "ERRO: O objeto MySQL n√£o p√¥de ser criado." << endl;
         return;
     }
 
     if (!mysql_real_connect(obj, HOST, USER, PASS, "addak", 3306, NULL, 0)) {
-        cout << "ERRO: Algumas informaÁıes do banco de dados est„o erradas ou n„o existem." << endl;
+        cout << "ERRO: Algumas informa√ß√µes do banco de dados est√£o erradas ou n√£o existem." << endl;
         cout << mysql_error(obj) << endl;
         return;
     }
@@ -465,21 +465,21 @@ setlocale(LC_ALL,"Portuguese");
         cout << "Cidade: " << row[5] << endl;
         cout << "Bairro: " << row[6] << endl;
         cout << "Rua: " << row[7] << endl;
-        cout << "N˙mero: " << row[8] << endl;
-        cout << "ObservaÁ„o" << row[9] << endl << endl<< endl;
+        cout << "N√∫mero: " << row[8] << endl;
+        cout << "Observa√ß√£o" << row[9] << endl << endl<< endl;
        	
 	   }
-        // Exibir outros campos conforme necess·rio
+        // Exibir outros campos conforme necess√°rio
     }
 switch (opcao){
-    // Solicitar as modificaÁıes
+    // Solicitar as modifica√ß√µes
     case 1:{
     	
 	char novoNome[100];
     cout << "Digite o novo nome: ";
     cin.ignore();
     cin.getline(novoNome, 100);
-    // Construir a consulta de modificaÁ„o
+    // Construir a consulta de modifica√ß√£o
     sprintf(consulta, "UPDATE Cliente_Empresa SET Nome = '%s' WHERE Id_Cliente = %d", novoNome, id);}
 	break;
 	case 2:{
@@ -488,7 +488,7 @@ switch (opcao){
     cin.ignore();
     cin.getline(CNPJ, 20);
 
-    // Construir a consulta de modificaÁ„o
+    // Construir a consulta de modifica√ß√£o
     sprintf(consulta, "UPDATE Cliente_Empresa SET CNPJ = '%s' WHERE Id_Cliente = %d", CNPJ, id);}
 	break;
 case 3:{
@@ -497,7 +497,7 @@ case 3:{
     cin.ignore();
     cin.getline(Telefone, 20);
 
-    // Construir a consulta de modificaÁ„o
+    // Construir a consulta de modifica√ß√£o
     sprintf(consulta, "UPDATE Cliente_Empresa SET Telefone = '%s' WHERE Id_Cliente = %d", Telefone, id);}
 	break;
 case 4:{
@@ -506,7 +506,7 @@ case 4:{
     cin.ignore();
     cin.getline(Cep, 20);
 
-    // Construir a consulta de modificaÁ„o
+    // Construir a consulta de modifica√ß√£o
     sprintf(consulta, "UPDATE Cliente_Empresa SET Cep = '%s' WHERE Id_Cliente = %d", Cep, id);}
 	break;
 case 5:{
@@ -515,7 +515,7 @@ case 5:{
     cin.ignore();
     cin.getline(Cidade, 20);
 
-    // Construir a consulta de modificaÁ„o
+    // Construir a consulta de modifica√ß√£o
     sprintf(consulta, "UPDATE Cliente_Empresa SET Cidade = '%s' WHERE Id_Cliente = %d", Cidade, id);}
 	break;
 case 6:{
@@ -524,7 +524,7 @@ case 6:{
     cin.ignore();
     cin.getline(Bairro, 20);
 
-    // Construir a consulta de modificaÁ„o
+    // Construir a consulta de modifica√ß√£o
     sprintf(consulta, "UPDATE Cliente_Empresa SET Bairro = '%s' WHERE Id_Cliente = %d", Bairro, id);}
 	break;
 case 7:{
@@ -533,7 +533,7 @@ case 7:{
     cin.ignore();
     cin.getline(Rua, 20);
 
-    // Construir a consulta de modificaÁ„o
+    // Construir a consulta de modifica√ß√£o
     sprintf(consulta, "UPDATE Cliente_Empresa SET Rua = '%s' WHERE Id_Cliente = %d", Rua, id);}
 	break;
 case 8:{
@@ -542,20 +542,20 @@ case 8:{
     cin.ignore();
     cin.getline(Numero, 20);
 
-    // Construir a consulta de modificaÁ„o
+    // Construir a consulta de modifica√ß√£o
     sprintf(consulta, "UPDATE Cliente_Empresa SET Numero = '%s' WHERE Id_Cliente = %d", Numero, id);}
     case 9:{
 	char Obs[250];
-    cout << "Digite a nova ObservaÁ„o: ";
+    cout << "Digite a nova Observa√ß√£o: ";
     cin.ignore();
     cin.getline(Obs, 250);
-    // Construir a consulta de modificaÁ„o
+    // Construir a consulta de modifica√ß√£o
     sprintf(consulta, "UPDATE Cliente_Empresa SET Observacao = '%s' WHERE Id_Cliente = %d", Obs, id);}
 	break;	
 default : {
 printf("Erro de Sistema");}break;
 }
-    // Executar a consulta SQL de modificaÁ„o
+    // Executar a consulta SQL de modifica√ß√£o
     if (mysql_query(obj, consulta)) {
         cout << "ERRO: " << mysql_error(obj) << endl;
     }else 
@@ -568,11 +568,11 @@ printf("Erro de Sistema");}break;
         	system("cls");
     	printf("Alterar mais algum dado?\n");
     	printf("[1] Sim\n");
-    	printf("[0] N„o\n");
+    	printf("[0] N√£o\n");
     	printf("R: ");
     	scanf(" %d", &novo);
     	if(novo != 1 && novo != 0){
-    		printf("INV¡LIDO");
+    		printf("INV√ÅLIDO");
     		system("pause");
 		}
 	}while(novo != 1 && novo != 0);
@@ -581,7 +581,7 @@ printf("Erro de Sistema");}break;
     system("cls");
 	}while(novo==1);
 		Fim_do_Programa();
-    // Liberar o resultado e fechar a conex„o
+    // Liberar o resultado e fechar a conex√£o
     mysql_free_result(result);
     fecharMySQL(obj);
 }
@@ -592,12 +592,12 @@ void Busca_Cliente(){
 setlocale(LC_ALL,"Portuguese");
     // Conectar ao banco de dados
     if (!(obj = mysql_init(0))) {
-        cout << "ERRO: O objeto MySQL n„o pÙde ser criado." << endl;
+        cout << "ERRO: O objeto MySQL n√£o p√¥de ser criado." << endl;
         return;
     }
 
     if (!mysql_real_connect(obj, HOST, USER, PASS, "addak", 3306, NULL, 0)) {
-        cout << "ERRO: Algumas informaÁıes do banco de dados est„o erradas ou n„o existem." << endl;
+        cout << "ERRO: Algumas informa√ß√µes do banco de dados est√£o erradas ou n√£o existem." << endl;
         cout << mysql_error(obj) << endl;
         return;
     }
@@ -636,11 +636,11 @@ setlocale(LC_ALL,"Portuguese");
         cout << "Cidade: " << row[5] << endl;
         cout << "Bairro: " << row[6] << endl;
         cout << "Rua: " << row[7] << endl;
-        cout << "N˙mero: " << row[8] << endl;
-        cout << "ObservaÁ„o: " << row[9] << endl;
-        // Exibir outros campos conforme necess·rio
+        cout << "N√∫mero: " << row[8] << endl;
+        cout << "Observa√ß√£o: " << row[9] << endl;
+        // Exibir outros campos conforme necess√°rio
     } else {
-        cout << "\n\nCliente n„o encontrado." << endl;
+        cout << "\n\nCliente n√£o encontrado." << endl;
         fecharMySQL(obj);
         printf("\n\n");
         system("pause");
@@ -653,20 +653,20 @@ setlocale(LC_ALL,"Portuguese");
  //_________________________________________________________________________________________//
 /////////////////////////////////////////////////////////////////////////////////////////////
 void Cadastro_Produto(){
-	{//Conex„o com o Servidor MYSQL
+	{//Conex√£o com o Servidor MYSQL
 	char* consult; // Declara um ponteiro para armazenar a consulta SQL
-    const char* sentence; // Declara uma constante para armazenar a sentenÁa SQL
+    const char* sentence; // Declara uma constante para armazenar a senten√ßa SQL
     string sentence_aux; // Declara uma string para armazenar a consulta SQL como uma string
 
     // Inicializa o objeto MySQL
     if (!(obj = mysql_init(0))) {
-        cout << "ERRO: O objeto MySQL n„o pÙde ser criado." << endl;
+        cout << "ERRO: O objeto MySQL n√£o p√¥de ser criado." << endl;
         return ;
     }
 
     // Tenta conectar ao banco de dados MySQL
     if (!mysql_real_connect(obj, HOST, USER, PASS, "addak", 3306, NULL, 0)) {
-        cout << "ERRO: Algumas informaÁıes do banco de dados est„o erradas ou n„o existem." << endl;
+        cout << "ERRO: Algumas informa√ß√µes do banco de dados est√£o erradas ou n√£o existem." << endl;
         cout << mysql_error(obj) << endl;
         return ;
     }
@@ -678,8 +678,8 @@ void Cadastro_Produto(){
 	while (ProgramIsOpened) {
         setlocale(LC_ALL, "Portuguese");
 	  
-	 /**/	{//Formul·rio Cadastro Cliente
-		cout << "Use ponto ""."" ao invÈs de virgula "","", .";
+	 /**/	{//Formul√°rio Cadastro Cliente
+		cout << "Use ponto ""."" ao inv√©s de virgula "","", .";
 		printf("\n\n\n");
         Id = 0;
         cin.ignore(100, '\n');
@@ -697,11 +697,11 @@ void Cadastro_Produto(){
         cin.getline(Materias, 50, '\n');
         cout << endl;
 
-        cout << "Custo_ProduÁ„o: ";
+        cout << "Custo_Produ√ß√£o: ";
         cin.getline(CustoProducao, 8, '\n');
         cout << endl;
 
-        cout << "VariaÁ„o_Pocentagem: ";
+        cout << "Varia√ß√£o_Pocentagem: ";
        cin.getline(TaxaLucro, 8, '\n');
         cout << endl;
 
@@ -709,7 +709,7 @@ void Cadastro_Produto(){
         cin >> Quantidade;
         cout << endl;
 }
- {//AdiÁ„o das informaÁıes e VerificaÁ„o da conex„o
+ {//Adi√ß√£o das informa√ß√µes e Verifica√ß√£o da conex√£o
 		
 
 		sentence_aux = "INSERT INTO Produtos(`Id_Produtos`, `Nome`, `Categoria`,`Materiais`, `Custo_Producao`, `Variacao_Pocentagem`, `Quantidade`) VALUES(%d, '%s', '%s', '%s', '%s', '%s', '%d')";
@@ -719,7 +719,7 @@ void Cadastro_Produto(){
         sprintf(consult, sentence, Id, Nome, Categoria, Materias, CustoProducao, TaxaLucro,Quantidade);
 
         if (mysql_ping(obj)) {
-            cout << "ERRO: ImpossÌvel conectar." << endl;
+            cout << "ERRO: Imposs√≠vel conectar." << endl;
             cout << mysql_error(obj) << endl;
         }
 
@@ -728,7 +728,7 @@ void Cadastro_Produto(){
             cin.ignore(100, '\n');
             getchar();
         } else {
-            cout << "InformaÁıes adicionadas corretamente." << endl;
+            cout << "Informa√ß√µes adicionadas corretamente." << endl;
         }
 }
         mysql_store_result(obj);
@@ -736,7 +736,7 @@ void Cadastro_Produto(){
         system("cls");
 		cout << endl << "Adicionar novo cadastro?" << endl;
         cout << "[1]: Sim" << endl;
-        cout << "[0]: N„o" << endl;
+        cout << "[0]: N√£o" << endl;
         cout << "Resposta: ";
         cin >> answer;
         cout << endl;
@@ -751,16 +751,16 @@ system("cls");
  //_________________________________________________________________________________________//
 /////////////////////////////////////////////////////////////////////////////////////////////
 void DB_Produto() {
-    // conex„o com a base de dados
+    // conex√£o com a base de dados
     MYSQL* obj;
 
     if (!(obj = mysql_init(0))) {
-        cout << "ERRO: O objeto MySQL n„o pÙde ser criado." << endl;
+        cout << "ERRO: O objeto MySQL n√£o p√¥de ser criado." << endl;
         return;
     }
 
     if (!mysql_real_connect(obj, HOST, USER, PASS, DB, 3306, NULL, 0)) {
-        cout << "ERRO: Algumas informaÁıes do banco de dados est„o erradas ou n„o existem." << endl;
+        cout << "ERRO: Algumas informa√ß√µes do banco de dados est√£o erradas ou n√£o existem." << endl;
         cout << mysql_error(obj) << endl;
         return;
     }
@@ -787,7 +787,7 @@ void DB_Produto() {
              << "\t Valor: " << row[6] << "\t Quantidade: " << row[7] << endl;
     }
 
-    // Liberar o resultado e fechar a conex„o
+    // Liberar o resultado e fechar a conex√£o
     mysql_free_result(result);
     mysql_close(obj);
     cout << endl;
@@ -810,12 +810,12 @@ void Modificar_Produto() {
 
         // Conectar ao banco de dados
         if (!(obj = mysql_init(0))) {
-            cout << "ERRO: O objeto MySQL n„o pÙde ser criado." << endl;
+            cout << "ERRO: O objeto MySQL n√£o p√¥de ser criado." << endl;
             return;
         }
 
         if (!mysql_real_connect(obj, HOST, USER, PASS, "addak", 3306, NULL, 0)) {
-            cout << "ERRO: Algumas informaÁıes do banco de dados est„o erradas ou n„o existem." << endl;
+            cout << "ERRO: Algumas informa√ß√µes do banco de dados est√£o erradas ou n√£o existem." << endl;
             cout << mysql_error(obj) << endl;
             return;
         }
@@ -826,19 +826,19 @@ void Modificar_Produto() {
 
         char consulta[1000];
 
-        // Exibir os detalhes do produto antes da modificaÁ„o
+        // Exibir os detalhes do produto antes da modifica√ß√£o
         Exibir_Detalhes_Produto(obj, id);
 
-        // Exibir opÁıes de modificaÁ„o
+        // Exibir op√ß√µes de modifica√ß√£o
         cout << "[1] Materiais" << endl;
-        cout << "[2] Custo de ProduÁ„o" << endl;
-        cout << "[3] VariaÁ„o Percentual" << endl;
+        cout << "[2] Custo de Produ√ß√£o" << endl;
+        cout << "[3] Varia√ß√£o Percentual" << endl;
         cout << "[4] Quantidade" << endl;
         cout << "[0] Nenhum" << endl;
-        cout << "Escolha a opÁ„o desejada: ";
+        cout << "Escolha a op√ß√£o desejada: ";
         cin >> opcao;
 
-        // Construir a consulta de modificaÁ„o
+        // Construir a consulta de modifica√ß√£o
         switch (opcao) {
             case 1: {
                 char novosMateriais[50];
@@ -850,7 +850,7 @@ void Modificar_Produto() {
             }
             case 2: {
                 char novoCustoProducao[6];
-                cout << "Digite o novo custo de produÁ„o: ";
+                cout << "Digite o novo custo de produ√ß√£o: ";
                  cin.ignore();
     			cin.getline(novoCustoProducao, 6);
                 sprintf(consulta, "UPDATE Produtos SET Custo_Producao = %s WHERE Id_Produtos = %d", novoCustoProducao, id);
@@ -858,7 +858,7 @@ void Modificar_Produto() {
             }
             case 3: {
                 char novaVariacaoPercentual[6];
-                cout << "Digite a nova variaÁ„o percentual: ";
+                cout << "Digite a nova varia√ß√£o percentual: ";
                 cin.ignore();
     			cin.getline(novaVariacaoPercentual, 6);
                 sprintf(consulta, "UPDATE Produtos SET Variacao_Porcentagem = %s WHERE Id_Produtos = %d", novaVariacaoPercentual, id);
@@ -872,16 +872,16 @@ void Modificar_Produto() {
                 break;
             }
             case 0:
-                // Nenhuma modificaÁ„o, encerrar o loop
+                // Nenhuma modifica√ß√£o, encerrar o loop
                 break;
             default: {
-                cout << "OpÁ„o inv·lida." << endl;
+                cout << "Op√ß√£o inv√°lida." << endl;
                 fecharMySQL(obj);
                 return;
             }
         }
 
-        // Executar a consulta SQL de modificaÁ„o
+        // Executar a consulta SQL de modifica√ß√£o
         if (mysql_query(obj, consulta)) {
             cout << "ERRO: " << mysql_error(obj) << endl;
         } else {
@@ -893,17 +893,17 @@ void Modificar_Produto() {
         // Liberar o resultado
         mysql_free_result(mysql_store_result(obj));
 
-        // Perguntar se deseja realizar mais modificaÁıes
+        // Perguntar se deseja realizar mais modifica√ß√µes
         do {
             system("cls");
             cout << "Deseja modificar mais algum dado?" << endl;
             cout << "[1] Sim" << endl;
-            cout << "[0] N„o" << endl;
-            cout << "Escolha a opÁ„o desejada: ";
+            cout << "[0] N√£o" << endl;
+            cout << "Escolha a op√ß√£o desejada: ";
             cin >> novo;
 
             if (novo != 1 && novo != 0) {
-                cout << "OpÁ„o inv·lida" << endl;
+                cout << "Op√ß√£o inv√°lida" << endl;
                 system("pause");
             }
         } while (novo != 1 && novo != 0);
@@ -911,7 +911,7 @@ void Modificar_Produto() {
         // Limpar o buffer de entrada do teclado
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-        // Fechar a conex„o
+        // Fechar a conex√£o
         fecharMySQL(obj);
 
     } while (novo == 1);
@@ -943,12 +943,12 @@ void Exibir_Detalhes_Produto(MYSQL* obj, int id) {
     // Exibir os detalhes do produto
     MYSQL_ROW row;
     if ((row = mysql_fetch_row(result))) {
-        cout << "Detalhes do Produto antes da modificaÁ„o:" << endl;
+        cout << "Detalhes do Produto antes da modifica√ß√£o:" << endl;
         cout << "Nome: " << row[1] << endl;
         cout << "Categoria: " << row[2] << endl;
         cout << "Materiais: " << row[3] << endl;
-        cout << "Custo de ProduÁ„o: " << row[4] << endl;
-        cout << "VariaÁ„o Percentual: " << row[5] << endl;
+        cout << "Custo de Produ√ß√£o: " << row[4] << endl;
+        cout << "Varia√ß√£o Percentual: " << row[5] << endl;
         cout << "Valor: " << row[6] << endl;
         cout << "Quantidade: " << row[7] << endl << endl;
     }
@@ -963,10 +963,10 @@ void Campo_Produto(){
 	int tela;
 	do{
 	printf("\\\\__ Campo Produtos __//\n\n\n\n");
-	printf("Qual ser· sua aÁ„o?\n");
+	printf("Qual ser√° sua a√ß√£o?\n");
 	printf("[1] Cadastro\n");
 	printf("[2] DATA BASE\n");
-	printf("[3] ModificaÁ„o de produto\n");
+	printf("[3] Modifica√ß√£o de produto\n");
 	printf("\n\n\n\n\n\n");
 	printf("                         [0] Voltar\n");
 	printf("Escolha: ");
@@ -992,14 +992,14 @@ void Tela_Selecao(){
 		time_t t = time(NULL);
     struct tm *data_atual = localtime(&t);
 
-    // Obtendo o ano, mÍs e dia atual
+    // Obtendo o ano, m√™s e dia atual
     int ano_atual = data_atual->tm_year + 1900;
     int mes_atual = data_atual->tm_mon + 1;
     int dia_atual = data_atual->tm_mday;
 
     // Exibindo a data atual
     cout << "                                                           " << dia_atual << "/" << mes_atual << "/" << ano_atual << endl;
-	printf("Qual aÁ„o ser· tomada?\n\n");
+	printf("Qual a√ß√£o ser√° tomada?\n\n");
 	printf("[1] Campo Cliente\n");
 	printf("[2] Campo Produto\n");
 	printf("[3] Campo Pedidos\n");
@@ -1011,7 +1011,7 @@ void Tela_Selecao(){
 	system("cls");
 }while (tela!= 1 && tela!= 2 && tela!= 3 && tela!= 4 && tela!= 0);
 switch (tela)
-{//opÁıes do switch
+{//op√ß√µes do switch
 case 1 : Campo_Cliente();break;
 case 2 : Campo_Produto();break;
 case 3 : Campo_Pedido();break;
@@ -1025,13 +1025,13 @@ void NovoPedido() {
     int id;
 
    if (!(obj = mysql_init(0))) {
-        cout << "ERRO: O objeto MySQL n„o pÙde ser criado." << endl;
+        cout << "ERRO: O objeto MySQL n√£o p√¥de ser criado." << endl;
         return;
     }
 
     // Tenta conectar ao banco de dados MySQL
     if (!mysql_real_connect(obj, HOST, USER, PASS, "addak", 3306, NULL, 0)) {
-        cout << "ERRO: Algumas informaÁıes do banco de dados est„o erradas ou n„o existem." << endl;
+        cout << "ERRO: Algumas informa√ß√µes do banco de dados est√£o erradas ou n√£o existem." << endl;
         cout << mysql_error(obj) << endl;
         return;
     }
@@ -1065,7 +1065,7 @@ void NovoPedido() {
         // RECEBEU O ID DO CLIENTE BASEADO NO CNPJ
         id = atoi(row[0]);
     } else {
-        cout << "\n\nCliente n„o encontrado." << endl;
+        cout << "\n\nCliente n√£o encontrado." << endl;
         mysql_free_result(result);
         fecharMySQL(obj);
         printf("\n\n");
@@ -1083,21 +1083,21 @@ void NovoPedido() {
         return;
     }
 
-    // Recuperar o resultado do ˙ltimo pedido
+    // Recuperar o resultado do √∫ltimo pedido
     MYSQL_RES* resultUltimoPedido = mysql_store_result(obj);
     if (!resultUltimoPedido) {
-        cout << "ERRO: Falha ao recuperar o resultado da consulta do ˙ltimo pedido." << endl;
+        cout << "ERRO: Falha ao recuperar o resultado da consulta do √∫ltimo pedido." << endl;
         fecharMySQL(obj);
         return;
     }
 
     int idUltimoPedido;
-    // Exibir o ID do ˙ltimo pedido
+    // Exibir o ID do √∫ltimo pedido
     MYSQL_ROW rowUltimoPedido;
     if ((rowUltimoPedido = mysql_fetch_row(resultUltimoPedido))) {
         idUltimoPedido = atoi(rowUltimoPedido[0]);
     } else {
-        cout << "ERRO: N„o foi possÌvel obter o ID do ˙ltimo pedido." << endl;
+        cout << "ERRO: N√£o foi poss√≠vel obter o ID do √∫ltimo pedido." << endl;
         fecharMySQL(obj);
         return;
     }
@@ -1112,7 +1112,7 @@ void NovoPedido() {
         time_t t = time(NULL);
         struct tm* data_atual = localtime(&t);
 
-        // Obtendo o ano, mÍs e dia atual
+        // Obtendo o ano, m√™s e dia atual
         int ano_atual = data_atual->tm_year + 1900;
         int mes_atual = data_atual->tm_mon + 1;
         int dia_atual = data_atual->tm_mday;
@@ -1130,13 +1130,13 @@ void NovoPedido() {
         printf("Mais algum produto?\nR:");
         scanf(" %c", &mais);
 
-        // CÛdigo relacionado ‡ consulta SQL
+        // C√≥digo relacionado √† consulta SQL
         char consultaPedido[255];
         sprintf(consultaPedido, "INSERT INTO Pedidos(Id_Pedido, Id_Cliente, Id_Produtos, Quantidade) VALUES(%d, %d, %d, %d)",
                 idUltimoPedido, id, ID_Produto, Quantidade);
 
         if (mysql_ping(obj)) {
-            cout << "ERRO: ImpossÌvel conectar." << endl;
+            cout << "ERRO: Imposs√≠vel conectar." << endl;
             cout << mysql_error(obj) << endl;
             fecharMySQL(obj);
             return;
@@ -1148,7 +1148,7 @@ void NovoPedido() {
             getchar();
         } else {
         	printf("\n\n");
-            cout << "InformaÁıes adicionadas corretamente." << endl;
+            cout << "Informa√ß√µes adicionadas corretamente." << endl;
         }
 
     } while (mais == 's' || mais == 'S');
@@ -1163,13 +1163,13 @@ void PedidosRegistrados() {
 
     // Inicializar o objeto MySQL
     if (!(obj = mysql_init(0))) {
-        cout << "ERRO: O objeto MySQL n„o pÙde ser criado." << endl;
+        cout << "ERRO: O objeto MySQL n√£o p√¥de ser criado." << endl;
         return;
     }
 
     // Conectar ao banco de dados MySQL
     if (!mysql_real_connect(obj, HOST, USER, PASS, "addak", 3306, NULL, 0)) {
-        cout << "ERRO: Algumas informaÁıes do banco de dados est„o erradas ou n„o existem." << endl;
+        cout << "ERRO: Algumas informa√ß√µes do banco de dados est√£o erradas ou n√£o existem." << endl;
         cout << mysql_error(obj) << endl;
         return;
     }
@@ -1194,11 +1194,11 @@ void PedidosRegistrados() {
         return;
     }
 
-    // Verificar se h· resultados
+    // Verificar se h√° resultados
     int num_rows = mysql_num_rows(result);
     if (num_rows == 0) {
         cout << "Nenhum pedido encontrado com o ID fornecido." << endl;
-        // Liberar o resultado e fechar a conex„o
+        // Liberar o resultado e fechar a conex√£o
         mysql_free_result(result);
         fecharMySQL(obj);
         system("pause");
@@ -1213,7 +1213,7 @@ void PedidosRegistrados() {
              << "\t Qtd: " << row[3] << "\t R$" << row[4] << "\t  " << row[5] << endl;
     }
 
-    // Liberar o resultado e fechar a conex„o
+    // Liberar o resultado e fechar a conex√£o
     mysql_free_result(result);
     fecharMySQL(obj);
     system("pause");
@@ -1226,7 +1226,7 @@ void Campo_Pedido(){
 	int tela;
 	do{
 	printf("\\\\__ Campo Pedidos __//\n\n\n\n");
-	printf("Qual ser· sua aÁ„o?\n");
+	printf("Qual ser√° sua a√ß√£o?\n");
 	printf("[1] Novo Pedido\n");
 	printf("[2] Pedidos Registrados\n");
 	printf("\n\n\n\n\n\n");
